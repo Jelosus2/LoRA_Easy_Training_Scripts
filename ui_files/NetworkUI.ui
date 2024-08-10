@@ -669,6 +669,11 @@
          </item>
          <item>
           <property name="text">
+           <string>GLoRA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>LoHa</string>
           </property>
          </item>

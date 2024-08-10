@@ -132,7 +132,7 @@ class NetworkWidget(BaseWidget):
     # enable_tucker, train_norm, rescale, constrain, all block weights
     def change_algo(self, algo: str) -> None:
         algo = algo.lower()
-        self.toggle_conv(algo != "lora")
+        self.toggle_conv(algo not in {"lora", "glora"})
         self.toggle_kohya(algo in {"lora", "locon", "dylora"})
         dora = self.toggle_lycoris(
             algo not in {"lora", "locon", "dylora"},
@@ -353,7 +353,9 @@ class NetworkWidget(BaseWidget):
         network_args: dict = args.get("network_args", {})
 
         # update algo
-        if not network_args or "conv_dim" not in network_args:
+        if network_args.get("algo", "") == "glora":
+            self.widget.algo_select.setCurrentText("GLoRA")
+        elif not network_args or "conv_dim" not in network_args:
             self.widget.algo_select.setCurrentIndex(0)
         elif "algo" not in network_args:
             self.widget.algo_select.setCurrentIndex(1)
