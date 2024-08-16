@@ -15,14 +15,12 @@ A set of training scripts written in python for use in Kohya's [SD-Scripts](http
 
 ## Installation
 
-### You **Must** have python 3.10 installed, and it **Must** be the running version of python
-
 ### Windows
 
 If you are on windows all you need to do to install the scripts is follow these commands. Open up a command line within the folder that you want to install to then type these one line at a time
 
 ```
-git clone https://github.com/derrian-distro/LoRA_Easy_Training_Scripts
+git clone https://github.com/Jelosus2/LoRA_Easy_Training_Scripts
 cd LoRA_Easy_Training_Scripts
 install.bat
 ```
@@ -34,20 +32,24 @@ after that, it will begin installing, asking a few questions along the way. Just
 If you are on linux all you need to do to install the scripts is open up a shell within the folder that you want to install to then type the following line,
 
 ```
-sh -c "$(wget https://raw.githubusercontent.com/derrian-distro/LoRA_Easy_Training_Scripts/main/install.sh -O -)"
+if you are using python 3.10
+sh -c "$(wget https://raw.githubusercontent.com/Jelosus2/LoRA_Easy_Training_Scripts/main/install310.sh -O -)"
+
+if you are using python 3.11
+sh -c "$(wget https://raw.githubusercontent.com/Jelosus2/LoRA_Easy_Training_Scripts/main/install311.sh -O -)"
 ```
 
 Manual method below for those that want it.
 
 ```
-git clone https://github.com/derrian-distro/LoRA_Easy_Training_Scripts
+git clone https://github.com/Jelosus2/LoRA_Easy_Training_Scripts
 cd LoRA_Easy_Training_Scripts
 git submodule init
 git submodule update
 cd sd_scripts
-python3.10 -m venv venv
+python3.10 -m venv venv //python3.10 and 3.11 both work
 source venv/bin/activate
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 pip install xformers
 pip install -r ../requirements_ui.txt
@@ -68,6 +70,10 @@ accelerate config will ask you a bunch of questions, answer them like so,
 - all
 - bf16
 ```
+
+### NOTE:
+
+if you are using one of the installers, one of the questions it will ask you is "Are you using this locally? (y/n):" make sure you say y if you are going to be training on the computer you are using, This is very important to get correctly because the backend will not install otherwise, and you will be stuck wondering why it is not doing anything.
 
 ## Usage
 
