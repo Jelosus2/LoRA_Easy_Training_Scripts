@@ -82,6 +82,9 @@ class GeneralWidget(BaseWidget):
         self.widget.low_ram_enable.clicked.connect(
             lambda x: self.edit_args("lowram", x, True)
         )
+        self.widget.vae_reflection_enable.clicked.connect(
+            lambda x: self.edit_args("vae_reflection", x, True)
+        )
         self.widget.v_param_enable.clicked.connect(self.enable_disable_v_param)
         self.widget.v_pred_enable.clicked.connect(
             lambda x: self.edit_args("scale_v_pred_loss_like_noise_pred", x, True)
@@ -296,6 +299,7 @@ class GeneralWidget(BaseWidget):
         self.widget.sdxl_enable.setChecked(args.get("sdxl", False))
         self.widget.no_half_vae_enable.setChecked(args.get("no_half_vae", False))
         self.widget.low_ram_enable.setChecked(args.get("lowram", False))
+        self.widget.vae_reflection_enable.setChecked(args.get("vae_reflection", False))
         self.widget.v_param_enable.setChecked(args.get("v_parameterization", False))
         self.widget.v_pred_enable.setChecked(
             args.get("scale_v_pred_loss_like_noise_pred", False)
@@ -358,6 +362,7 @@ class GeneralWidget(BaseWidget):
         )
         self.edit_args("no_half_vae", self.widget.no_half_vae_enable.isChecked(), True)
         self.edit_args("lowram", self.widget.low_ram_enable.isChecked(), True)
+        self.edit_args("vae_reflection", self.widget.vae_reflection_enable.isChecked(), True)
         self.enable_disable_v_param(self.widget.v_param_enable.isChecked())
         self.change_full_type(
             self.widget.FP16_enable.isChecked(), self.widget.BF16_enable.isChecked()
